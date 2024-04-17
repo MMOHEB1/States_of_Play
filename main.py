@@ -9,11 +9,10 @@ screen.title("US States-Game")
 image = "blank_states_img.gif"
 screen.addshape(image)
 turtle.shape(image)
-answer_state = screen.textinput(title="US STATES GAME", prompt="What's another states name: ").title()
-
 data = pandas.read_csv("50_states.csv")
 
 states = data["state"].tolist()
+print(states)
 x_cor = data["x"]
 y_cor = data["y"]
 
@@ -31,6 +30,7 @@ def x_cor(xcor):
 game_is_on = True
 
 while game_is_on:
+    answer_state = screen.textinput(title="US STATES GAME", prompt="What's another states name: ").title()
     if answer_state in states:
         t = turtle.Turtle()
         t.hideturtle()
@@ -38,8 +38,8 @@ while game_is_on:
         state_data = data[data.state == answer_state]
         t.goto(int(state_data.x), int(state_data.y))
         t.write(answer_state)
-
-
+        states.remove(answer_state)
+#         create a score system that tracks how many states you have left
 # for state in states:
 #     if answer_state == state:
 #         print(state)
