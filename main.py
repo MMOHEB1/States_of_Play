@@ -26,3 +26,6 @@ while len(states) != 0:
         states.remove(answer_state)
 
 
+# create new CSV file with the ramining states not guessed
+new_data = pandas.DataFrame(states)
+new_data.to_csv("states_to_learn.csv")
